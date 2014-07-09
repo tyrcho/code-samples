@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+<title>Sample Catalog</title>
+
+
+<xmp theme="cerulean" style="display:none;">
+
+![logo][logo]
+
+This catalog references the assets. It targets technical and non technical users looking for an answer to their need.	
+	
+For a more detailed presentation you can consult 
+
+Last publication : June, 2014	
+
+[logo]: https://stephboreldesign.com/wp-content/uploads/2010/10/websitedesigner_01.jpg
+
+
+Table of contents
+=================
+
+*Note : this page is best viewed in a modern browser (IE >=9, Chrome, Firefox).*
+
+
+Forge & Studio
+====================
+
+![logo][logo]
+
+forge is a common development [#platform](#platform) to be shared by everyone It mainly consists in an aggregation of standard open source applications, which are all configured and modified in orderto work efficiently together. Kazan Forge aims at helping developers focusing on their real jobs instead of having to set up forges and technical tools for their projects. It comes out of the box with a large set of available tools(Git, SVN, Hg, Jenkins, Sonar, Nexus, ReviewBoard, Jira),and is easily extensible in order to fit with mostneeds.
+
+On top of the forge, we also provide a complete [#training](#training),
+
+
+lorem aaze
+===========
+
+![logo][logo]
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+[#platform](#platform) [#lorem](#lorem)
+
+*Contact* : [contact][contact]
+
+dolorq qsd
+===========
+
+![logo][logo]
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+[#ipsum](#ipsum) [#lorem](#lorem)
+
+*Contact* : [contact][contact]
+
+
+
+ipsum qsdqsd
+===========
+
+![logo][logo]
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+[#ipsum](#ipsum) 
+
+*Contact* : [contact][contact]
+
+
+[contact]: http://www.lipsum.com/
+
+
+</xmp>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+<script src="https://rawgit.com/jashkenas/coffeescript/master/extras/coffee-script.js"></script>
+<script src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+<style>
+.navbar-fixed-top {position: relative;}
+
+body {
+       padding-top : 0px ;
+}
+
+.even {
+  background-color:rgba(225,150,225, 0.25);
+  padding: 5px;
+}
+
+
+img {
+  float: left; 
+  clear: left; 
+  margin-right: 20px;
+  max-height: 100px;
+}
+h1 { 
+  clear: left;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+.masonry .item{
+  float: left;
+  background: #F8F8F8;;
+  border-radius: 5px;
+  border: 1px solid rgb(225,225,225);
+  width: 280px;
+  margin:5px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 4px 0 rgba(9,130,154,0.2);
+  background: linear-gradient(rgba(225,225,225, 1), rgba(225,225,225, 0.1));
+  
+}
+
+.item h2 {
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.content-item a {
+  margin-left: 15px;
+}
+
+.content-item {
+  border-top: 1px dotted #999;
+}
+</style>
+
+<script type="text/javascript">
+eval(CoffeeScript.compile((function(){/**
+ 
+
+# div containing the TOC                                        
+$("h1:first").after "<div id='tags' class='masonry'/>"
+$("h1:first").after "<div id='toc'/>"
+
+# add anchor to each <h1>
+$("h1:not(:first)").each (i, h) ->
+  name = $(h).text()
+  $(h).before("<br style='clear:both;'/><a href='##{name}' id='#{name}'/>")
+  a = $(h).prev()
+  $(h).detach()
+  $(h).appendTo($(a))
+
+# add link in toc to each <h1>
+# $("#toc").append "<h4><a href='##{$(h).text()}'>#{$(h).text()}</a></h4>\n" for h in $("h1:not(:first)")
+
+findTitle = (elt) ->
+  h1 = $(elt).parent().prevAll("a:first()")
+  if h1.text()
+    h1
+  else
+    findTitle($(elt).parent())
+
+# process each #tag
+$("a:contains('#')").each (i, a) ->
+                
+  # head of section containing the current tag
+  title = findTitle(a)
+  name = a.innerText.replace("#", "")
+  
+  # do we create or reuse the <h2> in TOC to handle the #tag ?
+  if $("#" + name).length is 0
+    $("#tags").append("<div id='#{name}' class='item'><h2><a href='#{@innerText}'>#{@innerText}</a></h2> <div id='content-#{name}'class='content-item'/></div>")
+  else
+    $("#" + name)
+	
+  
+  titleText = $(title).text()
+  # actual link to the section containing the tag
+  h2 = $("#content-" + name)
+  h2.append "<a href='##{titleText}'>#{titleText}</a><br/>"
+
+
+#wrap content between headers in divs
+$("#content").children("a").each (i, a) ->
+  style = if (i % 2) then "odd" else "even"
+  $(a).nextUntil("a").addBack().wrapAll("<div class='#{style}'>")
+
+ 
+**/}).toString().split('\n').slice(1, -1).join('\n')));
+
+	window.setTimeout(function(){
+		container = document.querySelector('.masonry');
+		msnry = new Masonry( container, {
+		  itemSelector: '.item'
+		});
+	},100);
+</script>
+
+
+
+</html>
+
