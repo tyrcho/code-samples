@@ -22,14 +22,15 @@ Table of contents
 *Note : this page is best viewed in a modern browser (IE >=9, Chrome, Firefox).*
 
 
+
 Forge & Studio
 ====================
 
 ![logo][logo]
 
-forge is a common development [#platform](#platform) to be shared by everyone It mainly consists in an aggregation of standard open source applications, which are all configured and modified in orderto work efficiently together. Kazan Forge aims at helping developers focusing on their real jobs instead of having to set up forges and technical tools for their projects. It comes out of the box with a large set of available tools(Git, SVN, Hg, Jenkins, Sonar, Nexus, ReviewBoard, Jira),and is easily extensible in order to fit with mostneeds.
+forge is a common development #platform to be shared by everyone It mainly consists in an aggregation of standard open source applications, which are all configured and modified in orderto work efficiently together. Kazan Forge aims at helping developers focusing on their real jobs instead of having to set up forges and technical tools for their projects. It comes out of the box with a large set of available tools(Git, SVN, Hg, Jenkins, Sonar, Nexus, ReviewBoard, Jira),and is easily extensible in order to fit with mostneeds.
 
-On top of the forge, we also provide a complete [#training](#training),
+On top of the forge, we also provide a complete #training,
 
 
 lorem aaze
@@ -38,7 +39,7 @@ lorem aaze
 ![logo][logo]
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-[#platform](#platform) [#lorem](#lorem)
+#platform #lorem
 
 *Contact* : [contact][contact]
 
@@ -48,7 +49,7 @@ dolorq qsd
 ![logo][logo]
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-[#ipsum](#ipsum) [#lorem](#lorem)
+#ipsum #lorem
 
 *Contact* : [contact][contact]
 
@@ -60,7 +61,7 @@ ipsum qsdqsd
 ![logo][logo]
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-[#ipsum](#ipsum) 
+#ipsum 
 
 *Contact* : [contact][contact]
 
@@ -71,8 +72,20 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 </xmp>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
 <script src="https://rawgit.com/jashkenas/coffeescript/master/extras/coffee-script.js"></script>
+<script type="text/javascript">
+// #tags in xmp block
+$("xmp").contents().each (function() {
+	this.textContent = this.textContent.replace(/#(\w*)/g, '[#$1](#$1)')
+});
+
+// vim replace :
+// :%s/\[#\(\w\+\)\](#\1)/#\1/g
+ 
+
+</script>
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+
 <script src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
 <style>
 .navbar-fixed-top {position: relative;}
