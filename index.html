@@ -71,8 +71,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 </xmp>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script src="https://rawgit.com/jashkenas/coffeescript/master/extras/coffee-script.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/jashkenas/coffeescript/1.7.1/extras/coffee-script.js"></script>
 <script type="text/javascript">
 // #tags in xmp block
 $("xmp").contents().each (function() {
@@ -84,9 +85,8 @@ $("xmp").contents().each (function() {
  
 
 </script>
-<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
-
-<script src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+<script src="https://cdn.rawgit.com/arturadib/strapdown/gh-pages/v/0.2/strapdown.js"></script>
+<script src="https://cdn.rawgit.com/desandro/masonry/v3.1.5/dist/masonry.pkgd.min.js"></script>
 <style>
 .navbar-fixed-top {position: relative;}
 
@@ -122,7 +122,7 @@ h1 {
   background: #F8F8F8;;
   border-radius: 5px;
   border: 1px solid rgb(225,225,225);
-  width: 280px;
+  width: 350px;
   margin:5px;
   border-radius: 5px;
   box-shadow: 5px 5px 4px 0 rgba(9,130,154,0.2);
@@ -155,7 +155,7 @@ $("h1:first").after "<div id='toc'/>"
 
 # add anchor to each <h1>
 $("h1:not(:first)").each (i, h) ->
-  name = $(h).text()
+  name = $(h).text().trim()
   $(h).before("<br style='clear:both;'/><a href='##{name}' id='#{name}'/>")
   a = $(h).prev()
   $(h).detach()
