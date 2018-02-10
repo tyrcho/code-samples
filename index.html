@@ -76,7 +76,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script src="https://cdn.rawgit.com/jashkenas/coffeescript/1.7.1/extras/coffee-script.js"></script>
 <script type="text/javascript">
 // #tags in xmp block
 $("xmp").contents().each (function() {
@@ -93,58 +92,51 @@ $("xmp").contents().each (function() {
 
 
 <script type="text/javascript">
-eval(CoffeeScript.compile((function(){/**
- 
+    var findTitle;
 
-# div containing the TOC                                        
-$("h1:first").after "<div id='tags' class='masonry'/>"
-$("h1:first").after "<div id='toc'/>"
+    $("h1:first").after("<div id='tags' class='masonry'/>");
 
-# add anchor to each <h1>
-$("h1:not(:first)").each (i, h) ->
-  name = $(h).text().trim()
-  $(h).before("<br style='clear:both;'/><a href='##{name}' id='#{name}'/>")
-  a = $(h).prev()
-  $(h).detach()
-  $(h).appendTo($(a))
+    $("h1:first").after("<div id='toc'/>");
 
-# add link in toc to each <h1>
-# $("#toc").append "<h4><a href='##{$(h).text()}'>#{$(h).text()}</a></h4>\n" for h in $("h1:not(:first)")
+    $("h1:not(:first)").each(function(i, h) {
+        var a, name;
+        name = $(h).text().trim();
+        $(h).before("<br style='clear:both;'/><a href='#" + name + "' id='" + name + "'/>");
+        a = $(h).prev();
+        $(h).detach();
+        return $(h).appendTo($(a));
+    });
 
-findTitle = (elt) ->
-  h1 = $(elt).parent().prevAll("a:first()")
-  if h1.text()
-    h1
-  else
-    findTitle($(elt).parent())
+    findTitle = function(elt) {
+        var h1;
+        h1 = $(elt).parent().prevAll("a:first()");
+        if (h1.text()) {
+            return h1;
+        } else {
+            return findTitle($(elt).parent());
+        }
+    };
 
-# process each #tag
-$("a:contains('#')").each (i, a) ->
-                
-  # head of section containing the current tag
-  title = findTitle(a)
-  name = a.innerText.replace("#", "")
-  
-  # do we create or reuse the <h2> in TOC to handle the #tag ?
-  if $("#" + name).length is 0
-    $("#tags").append("<div id='#{name}' class='item'><h2><a href='#{@innerText}'>#{@innerText}</a></h2> <div id='content-#{name}'class='content-item'/></div>")
-  else
-    $("#" + name)
-	
-  
-  titleText = $(title).text()
-  # actual link to the section containing the tag
-  h2 = $("#content-" + name)
-  h2.append "<a href='##{titleText}'>#{titleText}</a><br/>"
+    $("a:contains('#')").each(function(i, a) {
+        var h2, name, title, titleText;
+        title = findTitle(a);
+        name = a.innerText.replace("#", "");
+        if ($("#" + name).length === 0) {
+            $("#tags").append("<div id='" + name + "' class='item'><h2><a href='" + this.innerText + "'>" + this.innerText + "</a></h2> <div id='content-" + name + "'class='content-item'/></div>");
+        } else {
+            $("#" + name);
+        }
+        titleText = $(title).text();
+        h2 = $("#content-" + name);
+        return h2.append("<a href='#" + titleText + "'>" + titleText + "</a><br/>");
+    });
 
+    $("#content").children("a").each(function(i, a) {
+        var style;
+        style = i % 2 ? "odd" : "even";
+        return $(a).nextUntil("a").addBack().wrapAll("<div class='" + style + "'>");
+    });
 
-#wrap content between headers in divs
-$("#content").children("a").each (i, a) ->
-  style = if (i % 2) then "odd" else "even"
-  $(a).nextUntil("a").addBack().wrapAll("<div class='#{style}'>")
-
- 
-**/}).toString().split('\n').slice(1, -1).join('\n')));
 
 	window.setTimeout(function(){
 		container = document.querySelector('.masonry');
