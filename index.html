@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="style.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet"/>
 </head>
 <title>Sample Catalog</title>
 
@@ -12,97 +12,30 @@
 
 <script>
     // from https://forums.tumult.com/t/replace-inner-html-with-text-from-an-external-file/2129/3
-var txtFile = new XMLHttpRequest();
-txtFile.open("GET", "content.md", true);
-txtFile.onreadystatechange = function() {
-    if (txtFile.readyState === 4) {  // Makes sure the document is ready to parse.
-        if (txtFile.status === 200) {  // Makes sure it's found the file.
-            allText = txtFile.responseText;
-            var customTextElement = document.getElementById('content');
-            customTextElement.innerHTML = txtFile.responseText;
-            loadScript("strapdown.min.js");
+    var txtFile = new XMLHttpRequest();
+    txtFile.open("GET", "content.md", true);
+    txtFile.onreadystatechange = function () {
+        if (txtFile.readyState === 4) {  // Makes sure the document is ready to parse.
+            if (txtFile.status === 200) {  // Makes sure it's found the file.
+                allText = txtFile.responseText;
+                var customTextElement = document.getElementById('content');
+                customTextElement.innerHTML = txtFile.responseText;
+                loadScript("buildLinks.js");
+                loadScript("strapdown.min.js");
+                loadScript("https://cdn.rawgit.com/desandro/masonry/v3.1.5/dist/masonry.pkgd.min.js");
+                loadScript("buildMasonryToc.js");
+            }
         }
     }
-}
 
-function loadScript(address){
-    var script = document.createElement('script');
-    script.src = address;
-    document.getElementsByTagName('head')[0].appendChild(script);
-}
+    function loadScript(address) {
+        var script = document.createElement('script');
+        script.src = address;
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
 
-txtFile.send(null);
+    txtFile.send(null);
 </script>
-<script type="text/javascript">
-// #tags in xmp block
-$("xmp").contents().each (function() {
-	this.textContent = this.textContent.replace(/#(\w*)/g, '[#$1](#$1)')
-});
-
-// vim replace :
-// :%s/\[#\(\w\+\)\](#\1)/#\1/g
- 
-
-</script>
-
-<script src="https://cdn.rawgit.com/desandro/masonry/v3.1.5/dist/masonry.pkgd.min.js"></script>
-
-
-<script type="text/javascript">
-    var findTitle;
-
-    $("h1:first").after("<div id='tags' class='masonry'/>");
-
-    $("h1:first").after("<div id='toc'/>");
-
-    $("h1:not(:first)").each(function(i, h) {
-        var a, name;
-        name = $(h).text().trim();
-        $(h).before("<br style='clear:both;'/><a href='#" + name + "' id='" + name + "'/>");
-        a = $(h).prev();
-        $(h).detach();
-        return $(h).appendTo($(a));
-    });
-
-    findTitle = function(elt) {
-        var h1;
-        h1 = $(elt).parent().prevAll("a:first()");
-        if (h1.text()) {
-            return h1;
-        } else {
-            return findTitle($(elt).parent());
-        }
-    };
-
-    $("a:contains('#')").each(function(i, a) {
-        var h2, name, title, titleText;
-        title = findTitle(a);
-        name = a.innerText.replace("#", "");
-        if ($("#" + name).length === 0) {
-            $("#tags").append("<div id='" + name + "' class='item'><h2><a href='" + this.innerText + "'>" + this.innerText + "</a></h2> <div id='content-" + name + "'class='content-item'/></div>");
-        } else {
-            $("#" + name);
-        }
-        titleText = $(title).text();
-        h2 = $("#content-" + name);
-        return h2.append("<a href='#" + titleText + "'>" + titleText + "</a><br/>");
-    });
-
-    $("#content").children("a").each(function(i, a) {
-        var style;
-        style = i % 2 ? "odd" : "even";
-        return $(a).nextUntil("a").addBack().wrapAll("<div class='" + style + "'>");
-    });
-
-
-	window.setTimeout(function(){
-		container = document.querySelector('.masonry');
-		msnry = new Masonry( container, {
-		  itemSelector: '.item'
-		});
-	},100);
-</script>
-
 
 
 </html>
