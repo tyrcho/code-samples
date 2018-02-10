@@ -1,6 +1,8 @@
-Sample on how to publish a catalog or other HTML page using strapdown.js
+Sample on how to publish a catalog or other HTML page using strapdown.js.
 
-Uses CoffeScript, strapdown and Masonry
+It generates a dynamic table of content based on #tags in the markdown file.
+
+Uses strapdown (migrated to [strapdown-zeta](https://github.com/chaitin/strapdown-zeta)) and [Masonry](https://github.com/desandro/masonry)
 
 Can be seen live : https://tyrcho.github.io/sample-catalog/
 
