@@ -37,9 +37,9 @@ $("a:contains('#')").each(function (i, a) {
     return h2.append("<a href='#" + titleText + "'>" + titleText + "</a><br/>");
 });
 
-$("#content").children("a").each(function (i, a) {
+$("#content").children("br").each(function (i, a) {
     var style = i % 2 ? "odd" : "even";
-    return $(a).nextUntil("a").addBack().wrapAll("<div class='" + style + "'>");
+    return $(a).nextUntil("br,h1").addBack().wrapAll("<div class='" + style + "'>");
 });
 
 
