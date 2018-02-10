@@ -4,7 +4,7 @@ $("h1:first").after("<div id='tags' class='masonry'/>");
 
 $("h1:first").after("<div id='toc'/>");
 
-$("h1:not(:first)").each(function(i, h) {
+$("h2").each(function(i, h) {
     var a, name;
     name = $(h).text().trim();
     $(h).before("<br style='clear:both;'/><a href='#" + name + "' id='" + name + "'/>");
@@ -14,10 +14,10 @@ $("h1:not(:first)").each(function(i, h) {
 });
 
 findTitle = function(elt) {
-    var h1;
-    h1 = $(elt).parent().prevAll("a:first()");
-    if (h1.text()) {
-        return h1;
+    var h2;
+    h2 = $(elt).parent().prevAll("a:first()");
+    if (h2.text()) {
+        return h2;
     } else {
         return findTitle($(elt).parent());
     }
