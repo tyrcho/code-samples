@@ -2,12 +2,19 @@
 <html>
 <title>Sample Catalog</title>
 
+<bootmark src="content.md"></bootmark>
 
-<xmp theme="cerulean" style="display:none;" src="content.md">
-</xmp>
 
-<script type="text/javascript" src="//lbesson.bitbucket.io/md/strapdown.min.js"></script>
-	
+<script src="https://unpkg.com/bootmark@latest/dist/bootmark.bundle.min.js"></script>
+<script>
+    $.fn.bootmark.options = {
+        html: {
+            theme: 'journal',
+            toc: false
+        }
+    };
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="https://cdn.rawgit.com/jashkenas/coffeescript/1.7.1/extras/coffee-script.js"></script>
 <script type="text/javascript">
