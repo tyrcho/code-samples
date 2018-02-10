@@ -4,7 +4,7 @@ $("h1:first").after("<div id='tags' class='masonry'/>");
 
 $("h1:first").after("<div id='toc'/>");
 
-$("h2").each(function(i, h) {
+$("h2").each(function (i, h) {
     var a, name;
     name = $(h).text().trim();
     $(h).before("<br style='clear:both;'/><a href='#" + name + "' id='" + name + "'/>");
@@ -13,7 +13,7 @@ $("h2").each(function(i, h) {
     return $(h).appendTo($(a));
 });
 
-findTitle = function(elt) {
+findTitle = function (elt) {
     var h2;
     h2 = $(elt).parent().prevAll("a:first()");
     if (h2.text()) {
@@ -23,7 +23,7 @@ findTitle = function(elt) {
     }
 };
 
-$("a:contains('#')").each(function(i, a) {
+$("a:contains('#')").each(function (i, a) {
     var h2, name, title, titleText;
     title = findTitle(a);
     name = a.innerText.replace("#", "");
@@ -37,16 +37,15 @@ $("a:contains('#')").each(function(i, a) {
     return h2.append("<a href='#" + titleText + "'>" + titleText + "</a><br/>");
 });
 
-$("#content").children("a").each(function(i, a) {
-    var style;
-    style = i % 2 ? "odd" : "even";
+$("#content").children("a").each(function (i, a) {
+    var style = i % 2 ? "odd" : "even";
     return $(a).nextUntil("a").addBack().wrapAll("<div class='" + style + "'>");
 });
 
 
-window.setTimeout(function(){
+window.setTimeout(function () {
     container = document.querySelector('.masonry');
-    msnry = new Masonry( container, {
+    msnry = new Masonry(container, {
         itemSelector: '.item'
     });
-},100);
+}, 100);
