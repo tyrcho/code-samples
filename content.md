@@ -1,12 +1,7 @@
-![logo][logo]
+I will list here all my public repositories with code samples.
 
-This catalog references the assets. It targets technical and non technical users looking for an answer to their need.	
-	
-For a more detailed presentation you can consult 
+Last publication : February, 2018.	
 
-Last publication : June, 2014	
-
-[logo]: https://stephboreldesign.com/wp-content/uploads/2010/10/websitedesigner_01.jpg
 
 
 Table of contents
@@ -16,48 +11,24 @@ Table of contents
 
 
 
-Forge & Studio
-====================
+Static website (catalog)
+========================
 
-![logo][logo]
-
-forge is a common development #platform to be shared by everyone It mainly consists in an aggregation of standard open source applications, which are all configured and modified in orderto work efficiently together. Kazan Forge aims at helping developers focusing on their real jobs instead of having to set up forges and technical tools for their projects. It comes out of the box with a large set of available tools(Git, SVN, Hg, Jenkins, Sonar, Nexus, ReviewBoard, Jira),and is easily extensible in order to fit with mostneeds.
-
-On top of the forge, we also provide a complete #training,
+Uses only #javascript to display the content of a #markdown file, with tags. This site uses this template.
+ 
+https://github.com/tyrcho/sample-catalog
 
 
-lorem aaze
-===========
+BDD sample with Serenity and Cucumber
+==========
 
-![logo][logo]
+Automated #tests for #java . Software carpaccio exercise.
+ 
+https://github.com/tyrcho/serenity-carpaccio
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-#platform #lorem
+XML Serialization 
+====
 
-*Contact* : [contact][contact]
+Pure #java project. With JAXB and Maven.
 
-dolorq qsd
-===========
-
-![logo][logo]
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-#ipsum #lorem
-
-*Contact* : [contact][contact]
-
-
-
-ipsum qsdqsd
-===========
-
-![logo][logo]
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-#ipsum 
-
-*Contact* : [contact][contact]
-
-
-[contact]: http://www.lipsum.com/
-
+https://github.com/tyrcho/java-xml-serialization-demo
