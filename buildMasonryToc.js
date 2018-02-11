@@ -12,20 +12,19 @@ $("h2").each(function (i, h) {
 
 $("a:contains('#')").each(function (i, a) {
     var title = findTitle(a);
-    // console.log("findTitle(" + a + ") => " + title);
-    var name = a.innerText.replace("#", "");
+    var name = a.innerText.replace("#", "").replace(" ", "_");
+    // console.log("findTitle(" + a + ") => " + title + " name=" + name);
+    // console.log($("#" + name));
     if ($("#" + name).length === 0) {
         $("#tags").append("<div id='" + name + "' class='item'><h2><a href='" + this.innerText + "'>" + this.innerText + "</a></h2> <div id='content-" + name + "'class='content-item'/></div>");
-    } else {
-        $("#" + name);
     }
     var h2 = $("#content-" + name);
-    return h2.append("<a href='#" + title + "'>" + title + "</a><br/>");
+    h2.append("<a href='#" + title + "'>" + title + "</a><br/>");
 });
 
 $("#content").children("br").each(function (i, a) {
     var style = i % 2 ? "odd" : "even";
-    return $(a).nextUntil("br,h1").addBack().wrapAll("<div class='" + style + "'>");
+    $(a).nextUntil("br,h1").addBack().wrapAll("<div class='" + style + "'>");
 });
 
 

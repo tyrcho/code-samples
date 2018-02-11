@@ -1,4 +1,4 @@
-I will list here all my public repositories with code samples.
+I list here my relevant public repositories.
 
 Last publication : February, 2018.	
 
@@ -13,13 +13,22 @@ Table of contents
 Katas
 =====
 
+
+Paths (functional programming)
+------
+https://github.com/tyrcho/path-kata
+
+I wrote this short #presentation and #kata to introduce #(functional programming).
+Can be done in #java, #kotlin, #scala, vavr (javaslang).
+
+
 Property Based Testing
 ---------------
 https://github.com/tyrcho/pbt-kata
 
-Paths
-------
-https://github.com/tyrcho/path-kata
+I wrote this short #presentation and #kata to introduce this special way of writing unit #tests.
+Can be done in #java, #kotlin, #scala.
+
 
 Minesweeper
 -----------
