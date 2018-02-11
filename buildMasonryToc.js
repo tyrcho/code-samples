@@ -1,40 +1,26 @@
-var findTitle;
-
 $("h1:first").after("<div id='tags' class='masonry'/>");
 
 $("h1:first").after("<div id='toc'/>");
 
 $("h2").each(function (i, h) {
-    var a, name;
-    name = $(h).text().trim();
+    var name = $(h).text().trim();
     $(h).before("<br style='clear:both;'/><a href='#" + name + "' id='" + name + "'/>");
-    a = $(h).prev();
+    var a = $(h).prev();
     $(h).detach();
-    return $(h).appendTo($(a));
+    $(h).appendTo($(a));
 });
 
-findTitle = function (elt) {
-    var h2;
-    h2 = $(elt).parent().prevAll("a:first()");
-    if (h2.text()) {
-        return h2;
-    } else {
-        return findTitle($(elt).parent());
-    }
-};
-
 $("a:contains('#')").each(function (i, a) {
-    var h2, name, title, titleText;
-    title = findTitle(a);
-    name = a.innerText.replace("#", "");
+    var title = findTitle(a);
+    // console.log("findTitle(" + a + ") => " + title);
+    var name = a.innerText.replace("#", "");
     if ($("#" + name).length === 0) {
         $("#tags").append("<div id='" + name + "' class='item'><h2><a href='" + this.innerText + "'>" + this.innerText + "</a></h2> <div id='content-" + name + "'class='content-item'/></div>");
     } else {
         $("#" + name);
     }
-    titleText = $(title).text();
-    h2 = $("#content-" + name);
-    return h2.append("<a href='#" + titleText + "'>" + titleText + "</a><br/>");
+    var h2 = $("#content-" + name);
+    return h2.append("<a href='#" + title + "'>" + title + "</a><br/>");
 });
 
 $("#content").children("br").each(function (i, a) {
@@ -49,3 +35,11 @@ window.setTimeout(function () {
         itemSelector: '.item'
     });
 }, 100);
+
+
+function findTitle(elt) {
+    var h2 = $(elt).parent().prevAll("a:first()");
+    return h2.text()
+        ? h2.text()
+        : findTitle($(elt).parent());
+}
