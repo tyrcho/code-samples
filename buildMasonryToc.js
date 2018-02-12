@@ -27,9 +27,9 @@ $("#content").children("br").each(function (i, a) {
     $(a).nextUntil("br,h1").addBack().wrapAll("<div class='" + style + "'>");
 });
 
-
-var container = document.querySelector('.masonry');
+var container = $(".masonry").get(0);
 new Masonry(container, {itemSelector: '.item'});
+
 
 
 function findTitle(elt) {
