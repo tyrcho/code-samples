@@ -1,5 +1,5 @@
- # from http://mfukar.github.io/2013/10/31/HTTPS.html
- # run  "openssl req -new -x509 -keyout server.pem -out server.pem -days 365 -nodes"
+# from http://mfukar.github.io/2013/10/31/HTTPS.html
+# run  "openssl req -new -x509 -keyout server.pem -out server.pem -days 365 -nodes"
 # to generate the certificate then access from https://localhost:4443
 
 import http.server, ssl
