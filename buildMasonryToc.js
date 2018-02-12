@@ -27,9 +27,17 @@ $("#content").children("br").each(function (i, a) {
     $(a).nextUntil("br,h1").addBack().wrapAll("<div class='" + style + "'>");
 });
 
-var container = $(".masonry").get(0);
-new Masonry(container, {itemSelector: '.item'});
+setTimeout(loadMasonry(), 10);
 
+function loadMasonry() {
+    var container = $(".masonry").get(0);
+    if (container == null) {
+        console.log("waiting to load Masonry");
+        setTimeout(loadMasonry(), 100);
+    } else {
+        new Masonry(container, {itemSelector: '.item'});
+    }
+}
 
 
 function findTitle(elt) {
