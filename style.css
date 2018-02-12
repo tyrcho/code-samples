@@ -35,7 +35,7 @@ h1, h2 {
 
 .masonry .item {
     float: left;
-    background: #F8F8F8;;
+    background: #F8F8F8;
     border-radius: 5px;
     border: 1px solid rgb(225, 225, 225);
     width: 350px;

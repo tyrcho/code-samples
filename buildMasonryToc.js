@@ -28,12 +28,12 @@ $("#content").children("br").each(function (i, a) {
 });
 
 
-window.setTimeout(function () {
-    container = document.querySelector('.masonry');
-    msnry = new Masonry(container, {
-        itemSelector: '.item'
-    });
-}, 100);
+function startMasonry() {
+    var container = document.querySelector('.masonry');
+    new Masonry(container, {itemSelector: '.item'});
+}
+
+window.setTimeout(startMasonry, 100);
 
 
 function findTitle(elt) {
