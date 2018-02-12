@@ -27,13 +27,13 @@ $("#content").children("br").each(function (i, a) {
     $(a).nextUntil("br,h1").addBack().wrapAll("<div class='" + style + "'>");
 });
 
-setTimeout(loadMasonry(), 10);
+setTimeout(loadMasonry(), 100, 100);
 
-function loadMasonry() {
+function loadMasonry(timeout) {
     var container = $(".masonry").get(0);
     if (container == null) {
-        console.log("waiting to load Masonry");
-        setTimeout(loadMasonry(), 100);
+        console.log("waiting to load Masonry for "+timeout+"ms");
+        setTimeout(loadMasonry(), timeout * 1.5, timeout * 1.5);
     } else {
         new Masonry(container, {itemSelector: '.item'});
     }
