@@ -217,6 +217,16 @@ https://github.com/tyrcho/activiti-camel-demo
 
 XML Serialization 
 --------------------
-Sample project to show how xjc can generate #java classes for JAXB serialization.
+Sample project to show how xjc can generate #java classes for JAXB serialization of #XML.
 
 https://github.com/tyrcho/java-xml-serialization-demo
+
+DotA Items
+----------
+In 2007 we were playing Defense of the Ancients.
+
+An this is the result of an experiment with #XML, XSL and XSD (XML Schema).
+
+XSL is actually well suited for #(functional programming).
+
+https://github.com/tyrcho/dota-items
