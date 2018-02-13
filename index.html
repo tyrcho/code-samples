@@ -12,21 +12,24 @@
 
 <script>
     // from https://forums.tumult.com/t/replace-inner-html-with-text-from-an-external-file/2129/3
-    var txtFile = new XMLHttpRequest();
-    txtFile.open("GET", "content.md", true);
-    txtFile.onreadystatechange = function () {
-        if (txtFile.readyState === 4) {  // Makes sure the document is ready to parse.
-            if (txtFile.status === 200) {  // Makes sure it's found the file.
-                allText = txtFile.responseText;
-                var customTextElement = document.getElementById('content');
-                customTextElement.innerHTML = txtFile.responseText;
-                loadScript("buildLinks.js");
-                loadScript("strapdown.min.js");
-                loadScript("https://cdn.rawgit.com/desandro/masonry/v3.1.5/dist/masonry.pkgd.min.js");
-                loadScript("buildMasonryToc.js");
+    window.onload = function () {
+        var txtFile = new XMLHttpRequest();
+        txtFile.open("GET", "content.md", true);
+        txtFile.onreadystatechange = function () {
+            if (txtFile.readyState === 4) {  // Makes sure the document is ready to parse.
+                if (txtFile.status === 200) {  // Makes sure it's found the file.
+                    var allText = txtFile.responseText;
+                    var customTextElement = document.getElementById('content');
+                    customTextElement.innerHTML = txtFile.responseText;
+                    loadScript("buildLinks.js");
+                    loadScript("strapdown.min.js");
+                    loadScript("https://cdn.rawgit.com/desandro/masonry/v3.1.5/dist/masonry.pkgd.min.js");
+                    loadScript("buildMasonryToc.js");
+                }
             }
-        }
-    }
+        };
+        txtFile.send(null);
+    };
 
     function loadScript(address) {
         var script = document.createElement('script');
@@ -34,7 +37,6 @@
         document.getElementsByTagName('head')[0].appendChild(script);
     }
 
-    txtFile.send(null);
 </script>
 
 

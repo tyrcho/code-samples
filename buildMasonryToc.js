@@ -27,21 +27,8 @@ $("#content").children("br").each(function (i, a) {
     $(a).nextUntil("br,h1").addBack().wrapAll("<div class='" + style + "'>");
 });
 
-setTimeout(function () {
-    loadMasonry(2);
-}, 2);
-
-function loadMasonry(timeout) {
-    var container = $(".masonry").get(0);
-    if (container == null) {
-        console.log("waiting to load Masonry for " + timeout + "ms");
-        setTimeout(function () {
-            loadMasonry(timeout*1.5)
-        }, timeout*1.5);
-    } else {
-        new Masonry(container, {itemSelector: '.item'});
-    }
-}
+var container = $(".masonry").get(0);
+new Masonry(container, {itemSelector: '.item'});
 
 
 function findTitle(elt) {
